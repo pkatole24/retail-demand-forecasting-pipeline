@@ -1,0 +1,12 @@
+# Ignore raw and processed data
+data/raw/
+data/processed/
+.vscode/
+
+# Python artifacts
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Environment files
+.env
