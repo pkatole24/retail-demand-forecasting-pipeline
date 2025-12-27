@@ -21,3 +21,9 @@ y_pred = df_test["lag_7"]
 mae = np.mean(np.abs(y_true - y_pred))
 print("Baseline MAE:", mae)
 
+def wape(y_true, y_pred):
+    return np.sum(np.abs(y_true - y_pred)) / np.sum(y_true)
+
+baseline_wape = wape(y_true, y_pred)
+print("Baseline WAPE:", baseline_wape)
+
