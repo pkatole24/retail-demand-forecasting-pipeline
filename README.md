@@ -134,6 +134,24 @@ Feature importance shows:
 - medium-term trends and weekly seasonality
 - prices providing incremental explanatory power
 
+## Modeling Results (Time-Based Holdout)
+
+Evaluation used a strict time-based split to avoid leakage:
+- Train: 2011-02-05 to 2014-12-31
+- Test: 2015-01-01 to 2016-04-24
+
+Metrics reported:
+- MAE: average absolute error in units
+- WAPE: sum(|y − ŷ|) / sum(y), which weights errors by demand volume and is more operationally meaningful in sparse retail sales
+
+Results:
+- Baseline (lag_7): MAE = 1.14, WAPE = 0.90
+- RandomForest: MAE = 0.94, WAPE = 0.74
+- Improvement: ~17–18% error reduction over baseline
+
+Note on error distribution plots:
+Many item-store-day observations have zero sales. A lag-7 baseline often predicts zero perfectly on those days, which can make the median absolute error appear low in boxplots. WAPE and time-series comparisons provide a clearer view of operational performance because they emphasize errors on higher-volume periods (spikes and regime changes).
+
 ---
 
 ## Design Choices and Rationale
@@ -141,6 +159,9 @@ Feature importance shows:
 - **No normalization** was applied, as tree models are scale-invariant.
 - **High-cardinality identifiers** (e.g., item_id) were not one-hot encoded; demand history features capture item-level behavior more robustly.
 - **Time-aware validation** was enforced throughout to prevent leakage.
+
+## As a robustness check, a LightGBM model was also trained using the same features and time-based split. LightGBM achieved performance comparable to RandomForest (MAE ≈ 0.95, WAPE ≈ 0.74), confirming that tree-based models consistently outperform the lag-based baseline on this task. RandomForest was retained as the final model due to slightly better performance and interpretability.
+
 
 ---
 
