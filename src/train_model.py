@@ -62,4 +62,8 @@ def wape(y_true, y_pred):
 rf_wape = wape(y_test_s, y_pred)
 print("RF WAPE:", rf_wape)
 
+import joblib
+joblib.dump(rf, "models/rf_v1.joblib")
+
+
 
