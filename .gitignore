@@ -1,12 +1,22 @@
 # Ignore raw and processed data
 data/raw/
 data/processed/
+data/weekly/
+models/*.joblib
 .vscode/
+.venv/
 
 # Python artifacts
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+.pytest_cache/
 
 # Environment files
 .env
+.env.local
+
+# Local interview preparation
+RETAIL_FORECASTING_TEI_MASTER_GUIDE.md
+TECHNICAL_INTERVIEW_REPORT.md
+WEEKLY_FORECAST_INTERVIEW_GUIDE.md
