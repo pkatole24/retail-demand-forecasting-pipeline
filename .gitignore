@@ -17,6 +17,7 @@ __pycache__/
 .env.local
 
 # Local interview preparation
+AGENTS.md
 RETAIL_FORECASTING_TEI_MASTER_GUIDE.md
 TECHNICAL_INTERVIEW_REPORT.md
 WEEKLY_FORECAST_INTERVIEW_GUIDE.md
